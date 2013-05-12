@@ -21,8 +21,7 @@ public class MongoDBTest {
 	
 	public static void main(String[] args) {
 		try {
-			DB dictDB = DBManager.connect("dictionary");	//equivalent to "use dictionary"
-			DBManager dbm = new DBManager(dictDB);
+			DictManager dm = new DictManager();
 
 			
 			//database table "german"
