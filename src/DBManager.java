@@ -53,7 +53,8 @@ public class DBManager {
 	}
 	
 	/***
-	 * Return the ObjectId of a database object
+	 * Return the ObjectId of a document; the searchKeys attribute must result
+	 * in an unique document, otherwise an error code will be returned
 	 * 
 	 * @param searchKeys
 	 * @param searchColl
