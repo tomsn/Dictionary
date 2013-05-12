@@ -1,3 +1,4 @@
+package src;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,31 +21,8 @@ public class MongoDBTest {
 	
 	public static void main(String[] args) {
 		try {
-			DB dictDB = DBManager.connect("dictionary");	//equivalent to "use dictionary"
-			DBManager dbm = new DBManager(dictDB);
-
+			DictManager dm = new DictManager();
 			
-			//database table "german"
-			DBCollection gerTable = dictDB.getCollection("german");
-			DBCollection engTable = dictDB.getCollection("english");
-			DBCollection eng_de_translation = dictDB.getCollection("eng_ger_translation");
-			
-			BasicDBObject gerEntry = new BasicDBObject();
-			gerEntry.put("word", "Tisch");
-			gerEntry.put("example", "");
-			gerTable.insert(gerEntry);
-			ObjectId gerEntryOID = (ObjectId)gerEntry.get( "_id" );
-			
-			BasicDBObject engEntry = new BasicDBObject();
-			engEntry.put("word", "table");
-			engEntry.put("example", "");
-			engTable.insert(engEntry);
-			ObjectId engEntryOID = (ObjectId)engEntry.get("_id");
-			
-			BasicDBObject engGerTranslEntry = new BasicDBObject();
-			engGerTranslEntry.put("gerID", gerEntryOID);
-			engGerTranslEntry.put("engID", engEntryOID);
-			eng_de_translation.insert(engGerTranslEntry);
 			
 			
 	    } catch (UnknownHostException e) {

@@ -1,3 +1,4 @@
+package src;
 import java.net.UnknownHostException;
 
 import org.bson.BSONObject;
@@ -15,12 +16,8 @@ public class MongoDBFind {
 	public static void main(String[] args) {
 
 		try {
-			DB dictDB = DBManager.connect("dictionary");	//equivalent to "use dictionary"
-			if (dictDB == null) {
-				System.out.println("Couldn't connect to DB! Exiting ...");
-				System.exit(1);
-			}
-			DBManager dbl = new DBManager(dictDB);
+			DictManager dm = new DictManager();
+			
 			DBCollection gerTable = dictDB.getCollection("german");
 			DBCollection engTable = dictDB.getCollection("english");
 			DBCollection eng_de_translation = dictDB.getCollection("eng_ger_translation");

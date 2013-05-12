@@ -1,25 +1,21 @@
+package src;
+
 import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
 import com.mongodb.DBCollection;
 
 
-public class DictManager {
-	private DB db = null;
+public class DictManager implements IDictManager {
+	protected DBManager dictDB = null;
 	
 	public DictManager() {
-		this.db = DBManager.connect("dictionary");
+		this.dictDB = new DBManager(Constants.DB_NAME);		//connect to database dictionary
 	}
 	
-	protected String insertWord(DBCollection coll, String word, String example) {
+	@Override
+	public String insertWord(DBCollection coll, String word, String example) {
 		BasicDBObject insertObject = new BasicDBObject();
 		insertObject.put("word", word);
 		insertObject.put("example", example);
-		return this.dbInsert(insertObject, coll);
-	}
-	private String inserWord(DBCollection coll, String word) {
-		return this.insertWord(coll, word, "");
-	}
-	private String insertGermanWord() {
-		return "";
+		return this.dictDB.insertDB(insertObject, coll);
 	}
 }
