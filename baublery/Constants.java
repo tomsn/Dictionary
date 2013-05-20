@@ -1,4 +1,5 @@
 package baublery;
+
 public class Constants {
 	//DB CONNECTION PARAMETER
 	public static final String HOST = "localhost";
