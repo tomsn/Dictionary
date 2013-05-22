@@ -1,8 +1,9 @@
 package vocabook;
 
 import org.bson.types.ObjectId;
+import com.google.code.morphia.annotations.Embedded;
 
-
+@Embedded
 public class Translation {
 	private String language = null;
 	private ObjectId reference = null;

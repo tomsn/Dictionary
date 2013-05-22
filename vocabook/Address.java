@@ -1,5 +1,8 @@
 package vocabook;
 
+import com.google.code.morphia.annotations.Embedded;
+
+@Embedded
 public class Address {
 	private String street = null;
 	private String number = null;

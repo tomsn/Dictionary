@@ -2,11 +2,16 @@ package vocabook;
 
 import java.util.Date;
 
-public class User {
+import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Entity;
+
+@Entity("user")
+public class User extends DBStoreable {
 	private String firstName = null;
 	private String lastName = null;
 	private String eMail = null;
 	private Date timeOfBirth = null;
+	@Embedded
 	private Address address = null;
 	
 	public User() {}

@@ -5,7 +5,6 @@ import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
 import com.google.code.morphia.annotations.Version;
 
-
 public abstract class DBStoreable {
     @Id
     @Property("id")
