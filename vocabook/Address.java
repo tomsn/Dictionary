@@ -10,15 +10,6 @@ public class Address {
 	private String city = null;
 	private String country = null;
 	
-	public Address() {}
-	public Address(String street, String number, String city, String postcode, String country) {
-		this.setStreet(street);
-		this.setNumber(number);
-		this.setCity(city);
-		this.setPostCode(postcode);
-		this.setCountry(country);
-	}
-	
 	protected String getStreet() {
 		return this.street;
 	}

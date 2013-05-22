@@ -2,7 +2,6 @@ package vocabook;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Reference;
 
@@ -17,8 +16,12 @@ public class VocabookEntry extends DBStoreable {
 	@Reference
 	private List<User> affiliation = null;
 	
-	public VocabookEntry() {}
+	public VocabookEntry() {
+		this.translations = new ArrayList<Translation>();
+		this.affiliation = new ArrayList<User>();
+	}
 	public VocabookEntry(String word) {
+		this();
 		this.setWord(word);
 	}
 	

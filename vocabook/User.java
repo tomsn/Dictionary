@@ -1,7 +1,6 @@
 package vocabook;
 
 import java.util.Date;
-
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 
@@ -14,8 +13,11 @@ public class User extends DBStoreable {
 	@Embedded
 	private Address address = null;
 	
-	public User() {}
+	public User() {
+		this.address = new Address();
+	}
 	public User(String firstName, String lastName, String eMail) {
+		this();
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setEMail(eMail);
