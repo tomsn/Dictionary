@@ -2,18 +2,19 @@ package vocabook;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
-import com.google.code.morphia.annotations.Reference;
 
 @Entity("vocabookentry")
 public class VocabookEntry extends DBStoreable {
-	
+	private String language = null;
 	private String word = null;
 	private String description = null;
 	private String pronunciation = null;
-	@Reference
+	@Embedded
 	private List<Translation> translations = null;
-	@Reference
+	@Embedded
 	private List<User> affiliation = null;
 	
 	public VocabookEntry() {
@@ -25,6 +26,12 @@ public class VocabookEntry extends DBStoreable {
 		this.setWord(word);
 	}
 	
+	protected String getLanguage() {
+		return this.language;
+	}
+	protected void setLanguage(String language) {
+		this.language = language;
+	}
 	protected String getWord() {
 		return this.word;
 	}

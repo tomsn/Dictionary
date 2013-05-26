@@ -9,7 +9,7 @@ public class DBManager {
 	private static DBManager dbManager = null;
 	private Logger dbLogger = null;
 	private DB db = null;
-	//TODO: add user and pwd to database connection (read from encrypted file)
+	//TODO: add user and pwd to database connection (read from encrypted file?)
 	//private String user = null;
 	//private String pwd = null;
 	
@@ -22,14 +22,14 @@ public class DBManager {
 		}
 	}
 	
-	public static DBManager getInstance(String dbName) {
+	protected static DBManager getInstance(String dbName) {
 		if (dbManager == null) {
 			dbManager = new DBManager(dbName);
 		}
 		return dbManager;
 	}
 
-	protected DB connect(String dbName) {
+	private DB connect(String dbName) {
 		try {
 			Mongo mongoDBConnection = new Mongo(Constants.HOST, Constants.PORT);
 			//connect to the database <dbName>
