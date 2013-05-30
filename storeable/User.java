@@ -4,18 +4,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
+import com.google.code.morphia.Key;
 import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Indexed;
 
 import data.DBBaseEntity;
+import data.DBLogic;
 
 @Entity("user")
 public class User extends DBBaseEntity {
+	public static final class AttributeNames {
+		public static final String firstNameAttribute = "firstName";
+	}
 	private String firstName = null;
 	private String lastName = null;
 	private String eMail = null;
-	private String password = null;		//TODO: make secure
+	//private String password = null;		//TODO: make secure
 	private Date dateOfBirth = null;
 	private Date lastLogin = null;
 	@Embedded
@@ -24,8 +29,8 @@ public class User extends DBBaseEntity {
 	@Indexed
 	private List<ObjectId> vocabularies = null;
 	
-	
 	public User() {
+		super();
 		this.address = new Address();
 		this.setCreatedAt(new Date());
 		this.setVocabularies(new ArrayList<ObjectId>());
@@ -38,13 +43,13 @@ public class User extends DBBaseEntity {
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -53,8 +58,7 @@ public class User extends DBBaseEntity {
 		return this.eMail;
 	}
 	public void setEMail(String mail) {
-		//TODO: check if email-address is valid (not at this position in the code)
-		eMail = mail;
+		this.eMail = mail;
 	}
 	public Date getDateOfBirth() {
 		return this.dateOfBirth;
@@ -85,5 +89,35 @@ public class User extends DBBaseEntity {
 	}
 	public List<ObjectId> getVocabularies() {
 		return this.vocabularies;
+	}
+	
+	
+	public static Key<User> save2DB(User u) {
+		return DBLogic.<User>save(u);
+	}
+	public static User getUserFromDB(ObjectId objId) {
+		return DBLogic.<User>get(User.class, objId);
+	}
+	public static User findFirst(String query, Object value) {
+		return DBLogic.<User>findFirst(User.class, query, value);
+	}
+	public static int delete(User user2Delete) {
+		return DBLogic.<User>delete(user2Delete);
+	}
+	public static int delete(ObjectId userObjId) {
+		return DBLogic.<User>delete(User.class, userObjId);
+	}
+	//methods for update
+	public static int set(User updateUser, String fieldExpr, Object value) {
+		return DBLogic.set(updateUser, fieldExpr, value);
+	}
+	public static int add(User updateUser, String fieldExpr, Object value) {
+		return DBLogic.add(updateUser, fieldExpr, value);
+	}
+	public static int addNumber(User updateUser, String fieldExpr, Number value) {
+		return DBLogic.addNumber(updateUser, fieldExpr, value);
+	}
+	public static int removeAll(User updateUser, String fieldExpr, Object value) {
+		return DBLogic.removeAll(updateUser, fieldExpr, value);
 	}
 }

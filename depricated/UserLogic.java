@@ -1,4 +1,4 @@
-package logic;
+package depricated;
 
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -10,7 +10,6 @@ import com.google.code.morphia.query.UpdateOperations;
 import storeable.User;
 import data.Constants;
 import data.DBManager;
-import depricated.IEntityLogic;
 
 public class UserLogic implements IEntityLogic<User> {
 	DBManager dbm = DBManager.getInstance();

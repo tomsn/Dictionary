@@ -2,11 +2,7 @@ package data;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-
 import org.apache.log4j.*;
-
-
 import com.mongodb.Mongo;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
