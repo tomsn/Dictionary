@@ -1,9 +1,6 @@
 package data;
 
-import java.util.List;
 import org.bson.types.ObjectId;
-import storeable.User;
-
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Key;
 import com.google.code.morphia.query.Query;
@@ -23,11 +20,9 @@ public abstract class DBLogic<T extends DBBaseEntity> {
 	public static <E extends DBBaseEntity> E get(Class<E> c, ObjectId objId) {
 		return c.cast(ds.get(c, objId));
 	}
-	
-	public static <E extends DBBaseEntity> E findFirst(Class<E> c, String query, Object value) {
-		Query<?> q = ds.find(c, query, value);
-		List<User> e = (List<User>) q.asList();
-		return (E) e.get(0);
+	//possible operators:  ["=", "==","!=", "<>", ">", "<", ">=", "<=", "in", "nin", "all", "size", "exists"]
+	public static <E extends DBBaseEntity> E findFirst(Class<E> c, String fieldExpr, String operator, Object value) {
+		return ds.find(c, fieldExpr + operator, value).get();
 	}
 
 	public static <E extends DBBaseEntity> int delete(E object2Delete) {

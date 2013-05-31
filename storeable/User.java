@@ -92,14 +92,15 @@ public class User extends DBBaseEntity {
 	}
 	
 	
+	
 	public static Key<User> save2DB(User u) {
 		return DBLogic.<User>save(u);
 	}
 	public static User getUserFromDB(ObjectId objId) {
 		return DBLogic.<User>get(User.class, objId);
 	}
-	public static User findFirst(String query, Object value) {
-		return DBLogic.<User>findFirst(User.class, query, value);
+	public static User find(String fieldExpr, String operator, Object value) {
+		return DBLogic.<User>findFirst(User.class, fieldExpr, operator, value);
 	}
 	public static int delete(User user2Delete) {
 		return DBLogic.<User>delete(user2Delete);

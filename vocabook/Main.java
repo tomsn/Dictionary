@@ -33,7 +33,7 @@ public class Main {
 //			System.out.println(uk.toString());
 			
 			
-			User u = User.findFirst(User.AttributeNames.firstNameAttribute, "Martina");
+			User u = User.find(User.AttributeNames.firstNameAttribute, "=", "Martina");
 			System.out.println(u.getEMail());
 
 //			ObjectId id = u.getId();
