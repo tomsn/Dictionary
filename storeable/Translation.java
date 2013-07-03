@@ -2,10 +2,12 @@ package storeable;
 
 import org.bson.types.ObjectId;
 import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Reference;
 
 @Embedded
 public class Translation {
 	private String language = null;
+	@Reference("vocabookentry")
 	private ObjectId reference = null;
 	
 	public Translation() {}
